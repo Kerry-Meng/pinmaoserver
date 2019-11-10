@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapper namespace="com.softtron.pinmaoserver.daos.UserDao">
+
+	<select id="findUser"
+		resultType="com.softtron.pinmaoserver.domains.TUser"
+		parameterType="com.softtron.pinmaoserver.domains.TUser">
+		select username,userpassword from t_user where
+		username=#{username} and
+		userpassword = #{password}
+	</select>
+	<select id="findUserByUsername"
+		resultType="com.softtron.pinmaoserver.domains.TUser"
+		parameterType="com.softtron.pinmaoserver.domains.TUser">
+		select username,userpassword from t_user where
+		username=#{username}
+	</select>
+
+	<update id="update"
+		parameterType="com.softtron.pinmaoserver.domains.TUser">
+		update t_user set token=#{token},logintime=#{loginTime}
+		where
+		username=#{username}
+	</update>
+
+	<select id="findUserByToken"
+		resultType="com.softtron.pinmaoserver.domains.TUser"
+		parameterType="java.lang.String">
+		select username,userpassword from t_user where
+		token=#{token}
+	</select>
+</mapper>

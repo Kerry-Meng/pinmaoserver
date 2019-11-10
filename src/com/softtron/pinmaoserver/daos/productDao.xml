@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapper namespace="com.softtron.pinmaoserver.daos.ProductDao">
+
+	<select id="findAllProducts"
+		resultType="com.softtron.pinmaoserver.domains.TProduct"
+		parameterType="java.util.HashMap">
+		select * from t_product limit #{start},#{count}
+	</select>
+	<select id="getTotal" resultType="java.lang.Integer" parameterType="java.util.HashMap">
+	   select count(*) from t_product
+	</select>
+	<insert id="insertProduct" resultType="java.lang.Integer"
+		parameterType="com.softtron.pinmaoserver.domains.TProduct">
+		insert into t_product(productname,productdes,productprice)
+		value(#{productName},#{productDes},#{productPrice})
+	</insert>
+	<update id="updateProduct" resultType="java.lang.Integer"
+		parameterType="com.softtron.pinmaoserver.domains.TProduct">
+		update t_product set productname =
+		#{productName},productPrice=#{productPrice},productDes=#{productDes}
+		where productId = #{productId}
+	</update>
+	<delete id="deleteProduct" resultType="java.lang.Integer"
+		parameterType="java.lang.Integer">
+		delete from t_product where productId = #{productId}
+	</delete>
+
+</mapper>

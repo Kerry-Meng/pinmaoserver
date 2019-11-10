@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mvc>
+    <!--扫描包路径-->
+    <package>com.softtron.pinmaoserver</package>
+    <!-- sql映射文件扫描路径 -->
+    <mapper>com/softtron/pinmaoserver/daos</mapper>
+     <!-- 服务器文件上传地址 -->
+    <uploadfolder>/upload</uploadfolder>
+    <!-- 服务器文件访问地址 -->
+    <uploadurl>http://127.0.0.1:8849/pinmaoserver/upload/</uploadurl>
+    <!-- 不拦截的url -->
+    <filterurls>
+    /user/login.htm,
+    </filterurls>
+</mvc>

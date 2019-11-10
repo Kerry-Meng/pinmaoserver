@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapper namespace="com.softtron.pinmaoserver.daos.ImgDao">
+
+	<insert id="insert" resultType="java.lang.Integer"
+		parameterType="com.softtron.pinmaoserver.domains.TImg">
+		insert into t_img(imgpath)
+		value(#{imgPath})
+	</insert>
+	
+</mapper>

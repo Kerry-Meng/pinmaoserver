@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapper namespace="com.softtron.pinmaoserver.daos.NewsDao">
+
+	<select id="findAll"
+		resultType="com.softtron.pinmaoserver.domains.TNews"
+		parameterType="java.util.HashMap">
+		select * from t_news limit #{start},#{count}
+	</select>
+	<select id="getTotal" resultType="java.lang.Integer" parameterType="java.util.HashMap">
+	   select count(*) from t_news
+	</select>
+	<insert id="insert" resultType="java.lang.Integer"
+		parameterType="com.softtron.pinmaoserver.domains.TNews">
+		insert into t_news(newstitle,newscontent,createdDate)
+		value(#{newsTitle},#{newsContent},#{dateCreated})
+	</insert>
+	<update id="update" resultType="java.lang.Integer"
+		parameterType="com.softtron.pinmaoserver.domains.TNews">
+		update t_news set newsname =
+		#{newsName},newsTitle=#{newsTitle},newsContent=#{newsContent},createdDate=#{dateCreated}
+		where newsId = #{newsId}
+	</update>
+	<delete id="delete" resultType="java.lang.Integer"
+		parameterType="java.lang.Integer">
+		delete from t_news where newsId = #{newsId}
+	</delete>
+</mapper>

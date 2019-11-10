@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapper namespace="com.softtron.pinmaoserver.daos.ICategoryDao">
+
+	<select id="findAllCategory"
+		resultType="com.softtron.pinmaoserver.domains.TCategory"
+		parameterType="java.util.HashMap">
+		select p.*,s.categoryname as scategoryname,s.categoryId as scategoryid,s.parentId as sparentid from t_category p left join t_category s on p.categoryId = s.parentId where p.parentId = 0 order by categoryid asc
+	</select>
+	<insert id="insertCategory" resultType="java.lang.Integer"
+		parameterType="com.softtron.pinmaoserver.domains.TCategory">
+		insert into t_category(categoryname,parentid) value(#{categoryName},#{parentId})
+	</insert>
+	<update id="updateCategory" resultType="java.lang.Integer"
+		parameterType="com.softtron.pinmaoserver.domains.TCategory">
+		update t_category set categoryname=#{categoryName},parentid=#{parentId} where categoryId = #{categoryId}
+	</update>
+	<delete id="deleteCategory" resultType="java.lang.Integer"
+		parameterType="java.lang.Integer">
+		delete from t_category  where categoryId = #{categoryId}
+	</delete>
+
+</mapper>
